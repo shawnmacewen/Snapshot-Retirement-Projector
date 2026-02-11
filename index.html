@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Snapshot Investment Projector</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Angular JS -->
+    <script src="js/required/angular.js"/></script>
+    <script src="js/required/angular-route.min.js"></script>
+
+    <!-- Angular App File -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/snapshot.js"></script>
+
+    <!-- Angularfire & Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/required/jquery.min.js"></script>
+
+    <!-- Bootsrap JS -->
+    <script src="js/required/bootstrap.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- UI Bootstrap -->
+    <script src="js/required/ui-bootstrap.min.js"></script>
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Charts module -->
+    <script src="js/required/Chart.js"></script>
+    <script src="js/required/angular-chart.js"></script>
+
+    <link rel="stylesheet" href="css/angular-chart.css">
+
+   
+    <!-- Customized CSS Style sheet -->
+    <link rel="stylesheet" href="css/custom.css" >
+
+    <!-- Custom fonts - currently using: Opens Sans -->
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:500,900italic,900,400italic,700italic,300,700,500italic,300italic,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300' rel='stylesheet' type='text/css'>
+
+    <!-- favicon -->
+    <link rel="shortcut icon"  href="favicon.ico/">
+
+    <!-- Google Analytics -->
+    <script>
+    </script>
+
+</head>
+
+
+<body ng-app="Snapshot">
+    <br>
+
+    <div id ="non-printable" class="container-adjust">
+       <a href="http://www.eastcoastbeard.com" class="btn btn-link" >EastCoastBeard.com</a>
+       <br>
+    </div>
+
+    <!--Inject the view here -->
+    <div class="main" id="main">
+        <div ng-view></div>
+
+
+
+        <!-- Main controller div below: keeps angular within this div -->
+    </div>
+</body>
+
+<footer>
+    <div id="non-printable" class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">  
+            </div>
+            <div class="col-md-6">
+                <div id="privacyModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3>Privacy</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p>Program does not store or track any information other than basic usage via Google analytics.</p>
+
+                                <p></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="disclaimerModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h3>Disclaimer</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p>The site eastcoastbeard.com ("Website") is operated by ECB ("Author"). All visitors of the site are considered as "Users".
+
+                                <p>Copyright</p>
+                                <p>All information contained on this website is subject to copyright and other proprietary rights. The reproduction of that information other than for purposes permitted by law is prohibited without the permission of the Author.</p>
+
+                                <p>Limitation of Liability</p>
+                                <p>Ongoing effort is been made to ensure that the information provided on this website is complete and accurate, the author does not warrant that it will be error-free and accepts no responsibility for any consequences arising from the use of the provided information.</p>
+
+                                <p>Privacy and data protection</p>
+                                <p>This website doesn't track anything. Have fun with it.</p>
+                                
+                                <p>Not affiliated with any other company or entity. The information contained is solely the personal workings of the author.</p>
+                                <br>
+                                <p>Last Updated February 13, 2017</p>
+                                <p>Copyright © 2017 EastCoastBeard. All Rights Reserved. | V 0.20</p>
+
+                            </div>
+                            <div class="modal-footer" >
+                                <span><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn" href="http://www.eastcoastbeard.com">www.eastcoastbeard.com</button>
+                <button type="button" class="btn" data-toggle="modal" data-target="#privacyModal">Privacy</button>
+                <button type="button" class="btn" data-toggle="modal" data-target="#disclaimerModal">Disclaimer</button>        
+            </div>
+            <br>
+
+        </div>
+    </div>
+
+</footer>
+
+</html>

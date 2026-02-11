@@ -1,0 +1,385 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27-May-2015, 12:32:09 AM
+    Author     : Shawn MacEwen
+*/
+
+#printable { display: none; }
+
+@media print
+{
+    #non-printable { display: none; }
+    #printable { display: block; }
+}
+
+
+
+/*
+This is the main background color the modules. 
+*/
+
+/* Custom container adjustment via css */
+
+@media (min-width: 768px) {
+    .container-adjust{
+        width: 750px;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+@media (min-width: 992px) {
+    .container-adjust{
+        width: 970px;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+@media (min-width: 1200px) {
+    .container-adjust{
+        width: 1170px;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 1470px) {
+    .container-adjust{
+        width: 1440px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+
+        }
+    }
+    
+    
+    /* Adjustment for Number Boxes */
+    .numberBox{
+        width: 80px;
+    }
+    
+    
+    
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.tooltip {
+  font-family: 'Roboto', sans-serif;
+}
+
+.popover {
+  font-family: 'Roboto', sans-serif;
+}
+
+.bg-Table{
+    background-color: #FCFAFB;
+}
+
+
+
+/* Newer color scheme */
+
+.bg-darkred{
+    background-color: #550402;
+    color: #FFFFFF;
+}
+
+.bg-lightblue{
+    background-color: #26558C;
+    color: #FFFFFF;
+}
+
+.bg-indigo{
+    background-color: #150F20;
+    color: #FFFFFF;
+}
+
+.bg-gold{
+    background-color: #BA8F5B;
+    color: #FFFFFF;
+}
+
+.bg-teal{
+    background-color: #468189;
+    color: #FFFFFF;
+}
+
+/* Old Color Scheme */
+
+.bg-blue{
+    background-color: #3C91E6;
+    color: #FFFFFF;
+}
+
+.bg-green{
+    background-color: #9FD356;
+    color: #FFFFFF;
+}
+
+.bg-darkgrey{
+    background-color: #342E37;
+    color: #FFFFFF;
+}
+
+.bg-orange{
+    background-color: #FA824C;
+    
+}
+
+.input-group .form-control {
+  text-align: right;
+  width: 120px
+}
+
+input[type="number"] {
+    width: 100px;
+    text-align: right;
+}
+
+.jumbotron {
+  background: url('http://www.shawnmacewen.com/wp-content/uploads/2015/06/imageBuilding.png') no-repeat;
+  background-size: contain;
+  background-position: left;
+
+}
+
+.label-standard {
+  background-color: #38B3A1;
+}
+.label-default[href]:hover,
+.label-default[href]:focus {
+  background-color: #5e5e5e;
+}
+
+.label-grey {
+  background-color: #342E37;
+}
+.label-grey[href]:hover,
+.label-grey[href]:focus {
+  background-color: #5e5e5e;
+}
+
+.label-gold {
+  background-color: #BA8F5B;
+}
+.label-gold[href]:hover,
+.label-gold[href]:focus {
+  background-color: #5BA8F5B;
+}
+
+/* custom panels */
+.panel-orange {
+  border-color: #FA824C;
+}
+.panel-orange > .panel-heading {
+  color: #fff;
+  background-color: #FA824C;
+  border-color: #FA824C;
+}
+.panel-orange > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #FA824C;
+}
+.panel-orange > .panel-heading .badge {
+  color: #FA824C;
+  background-color: #fff;
+}
+.panel-orange > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #FA824C;
+}
+
+
+.panel-orange > .panel-heading {
+background: #f99266; /* Old browsers */
+background: -moz-linear-gradient(top, #f99266 0%, #f97b45 100%, #efa21c 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f99266), color-stop(100%,#f97b45), color-stop(100%,#efa21c)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #f99266 0%,#f97b45 100%,#efa21c 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #f99266 0%,#f97b45 100%,#efa21c 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #f99266 0%,#f97b45 100%,#efa21c 100%); /* IE10+ */
+background: linear-gradient(to bottom, #f99266 0%,#f97b45 100%,#efa21c 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f99266', endColorstr='#efa21c',GradientType=0 ); /* IE6-9 */
+}
+
+
+
+.panel-blue {
+  border-color: #3C91E6;
+}
+.panel-blue > .panel-heading {
+  color: #fff;
+  background-color: #3C91E6;
+  border-color: #3C91E6;
+}
+.panel-blue > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #3C91E6;
+}
+.panel-blue > .panel-heading .badge {
+  color: #3C91E6;
+  background-color: #fff;
+}
+.panel-blue > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #3C91E6;
+}
+
+
+.panel-blue > .panel-heading {
+background: #5ea1e5; /* Old browsers */
+background: -moz-linear-gradient(top, #5ea1e5 0%, #328be5 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5ea1e5), color-stop(100%,#328be5)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #5ea1e5 0%,#328be5 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #5ea1e5 0%,#328be5 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #5ea1e5 0%,#328be5 100%); /* IE10+ */
+background: linear-gradient(to bottom, #5ea1e5 0%,#328be5 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5ea1e5', endColorstr='#328be5',GradientType=0 ); /* IE6-9 */
+}
+
+
+.panel-green {
+  border-color: #9FD356;
+}
+.panel-green > .panel-heading {
+  color: #fff;
+  background-color: #9FD356;
+  border-color: #9FD356;
+}
+.panel-green > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #9FD356;
+}
+.panel-green > .panel-heading .badge {
+  color: #9FD356;
+  background-color: #fff;
+}
+.panel-green > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #9FD356;
+}
+
+
+.panel-green > .panel-heading {
+background: #a2d15c; /* Old browsers */
+background: -moz-linear-gradient(top, #a2d15c 0%, #99d147 100%, #efa21c 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2d15c), color-stop(100%,#99d147), color-stop(100%,#efa21c)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #a2d15c 0%,#99d147 100%,#efa21c 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #a2d15c 0%,#99d147 100%,#efa21c 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #a2d15c 0%,#99d147 100%,#efa21c 100%); /* IE10+ */
+background: linear-gradient(to bottom, #a2d15c 0%,#99d147 100%,#efa21c 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2d15c', endColorstr='#efa21c',GradientType=0 ); /* IE6-9 */
+}
+
+
+
+
+
+.panel-darkgrey {
+  border-color: #342E37;
+}
+.panel-darkgrey > .panel-heading {
+  color: #fff;
+  background-color: #342E37;
+  border-color: #342E37;
+}
+.panel-darkgrey > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #342E37;
+}
+.panel-darkgrey > .panel-heading .badge {
+  color: #342E37;
+  background-color: #fff;
+}
+.panel-darkgrey > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #342E37;
+}
+
+
+.panel-darkgrey > .panel-heading {
+background: -moz-linear-gradient(top, rgba(52,46,55,0.85) 0%, rgba(52,46,55,0.99) 94%, rgba(38,34,40,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(52,46,55,0.85)), color-stop(94%,rgba(52,46,55,0.99)), color-stop(100%,rgba(38,34,40,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(52,46,55,0.85) 0%,rgba(52,46,55,0.99) 94%,rgba(38,34,40,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(52,46,55,0.85) 0%,rgba(52,46,55,0.99) 94%,rgba(38,34,40,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(52,46,55,0.85) 0%,rgba(52,46,55,0.99) 94%,rgba(38,34,40,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(52,46,55,0.85) 0%,rgba(52,46,55,0.99) 94%,rgba(38,34,40,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9342e37', endColorstr='#262228',GradientType=0 ); /* IE6-9 */
+}
+
+
+/* end of custom pallete -  */
+
+
+.right-align {
+    
+    display: inline-block;
+    text-align: right;
+}
+
+.small-link {
+    font-size: small;
+}
+    
+/* Specify styling for tooltip contents */
+.tooltip.Standard .tooltip-inner {
+    color: #000000;
+    background-color: #E6E6E6;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+            
+ /* Hide arrow */
+.tooltip.customClass .tooltip-arrow {
+                display: none;
+}
+
+
+/* Custom paper panels */
+
+
+.panel {
+  border-radius: 2px;
+  border: 0;
+  -webkit-box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+.panel > .panel-heading,
+.panel.panel-default > .panel-heading {
+  background-color: #eeeeee;
+}
+.panel.panel-inverse > .panel-heading {
+  background-color: #3f51b5;
+}
+.panel.panel-primary > .panel-heading {
+  background-color: #009688;
+}
+.panel.panel-success > .panel-heading {
+  background-color: #4caf50;
+}
+.panel.panel-info > .panel-heading {
+  background-color: #03a9f4;
+}
+.panel.panel-warning > .panel-heading {
+  background-color: #ff5722;
+}
+.panel.panel-danger > .panel-heading {
+  background-color: #f44336;
+}
+[class*="panel-"] > .panel-heading {
+  color: rgba(255,255,255, 0.84);
+  border: 0;
+}
+.panel-default > .panel-heading,
+.panel:not([class*="panel-"]) > .panel-heading {
+  color: rgba(0,0,0, 0.87);
+}

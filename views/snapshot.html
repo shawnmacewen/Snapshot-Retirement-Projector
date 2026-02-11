@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <div class="" ng-controller="snapshotController">
+        
+        <div id="non-printable">
+            
+            <div class="container-adjust"><!-- Master Container START, needs to be container-adjust for eliminating white space on the edges for mobile devices-->
+
+                <div class="row">         
+                    <div class="col-md-12"><!--The Whole size of of the planner START -->
+                        
+                        <div class="panel panel-darkgrey">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Snapshot Investment Projector</h1>
+
+                            </div>
+                            <div class="panel-body bg-Table">
+                                <p>
+                                <div class="row"><!-- First set of boxes START-->
+                                    <div class="col-md-9"><!-- This is the container for the Left Hand section above results START -->
+                                        
+                                        <div class="panel panel-darkgrey"><!-- Current Status Panel START -->
+                                            
+                                            <div class="panel panel-heading">
+                                                <span>Current Status</span>
+                                            </div>
+                                            
+                                            <div class="panel-body"><!-- Body Current Status START -->
+                                                <div class="row"><!-- Row for Current Status START -->
+                                                    
+                                                    <div class="col-sm-6"><!-- This is the column for the grouping of elements in the current status box START -->
+                                                        <table class="table table-bordered table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                           
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="form-group">
+                                                                            <label for="inputAge" class="control-label"><b>Current Age</b></label><input type="number" min="1" max="90" step="1" ng-model="currentAge" class="form-control numberBox input-lg text-center" id="inputAge" placeholder="Age">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="form-group">
+                                                                            <label for="retirementAge" class="control-label">Retirement Age</label>
+                                                                            <input type="number" min="{{ currentAge + 1}}" max="{{ planningAge - 1}}" ng-model="retirementAge" class="form-control numberBox input-lg text-center" id="retirementAge" placeholder="65">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="form-group">
+                                                                            <label for="planningAge" class="control-label">Planning Age</label>
+                                                                            <input type="number" min="{{ retirementAge + 1}}" max="120"  ng-model="planningAge" id="planningAge" class="form-control numberBox input-lg text-center">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div><!-- This is the column for the grouping of elements in the current status box END -->
+                                                    
+                                                    <div class="col-sm-3"><!-- Filler column -->
+                                                    
+                                                    </div>
+                                                    
+                                                   
+                                                    <div class="col-sm-3"><!-- Help Guide Column  - Investments START -->
+                                                        <table class="table table-bordered"><!-- Help Guide Table - Investments START -->
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Help Guide</th>
+
+                                                                </tr>
+
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><a href=""><i class="material-icons">play_circle_outline</i> Video Explanation</a></td>
+                                                                </tr>
+                                                               
+                                                                <tr>
+                                                                    <td><a href=""><i class="material-icons">help</i> Help with this Program</a></td>
+                                                                </tr>
+                                                                
+                                                            </tbody>
+                                                        </table> <!-- Help Guide Table - Investments END-->
+                                                    </div><!-- Help Guide Column  - Investments END -->
+                                                </div><!-- Row for Current Status END -->
+
+
+                                            </div><!-- Body Current Status END -->
+
+
+                                        </div><!-- Current Status Panel END -->
+
+
+                                        <!-- Government benefits have been removed and this is just snapshot of investments for now
+
+                                        <div class="panel ">
+                                            <div class="panel-heading">Government Benefits</div>
+
+
+                                            <div class="panel-body">
+                                                <p>Estimate your CPP Amount: <input type="number" min="0" max="12780" step="1" style="margin-left: 20px" ng-model="cppAmount" class="form-control right-align" placeholder="12780"></p>
+                                                <p>Estimate your OAS Amount: <input type="number" min="0" max="6764" step="1" style="margin-left: 20px" ng-model="oasAmount" class="form-control right-align" placeholder="6764"></p>
+                                                <br><h6>See other calculators for assistance on estimating these numbers. (Government benefits are not currently factored in v0.15)</h6>
+                                            </div>
+                                            </div>
+                                        -->
+
+
+                                        <div class="panel panel-darkgrey"><!-- Investment Panel START -->
+                                            <div class="panel-heading ">Investments</div>
+
+
+                                            <div class="panel-body"><!-- Investments Body START -->
+                                                <p>Please enter your current holdings and if you are making any regular annual contributions.</p>
+                                            
+
+
+                                            
+                                                <div class="row"><!-- Row Inside Investments Panels START -->
+                                                   
+                                                    <div class="col-sm-6"><!-- Current holdings and contributions section  START -->
+                                                        <table class="table table-bordered table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th> </th>
+                                                                    <th>Current Holdings</th>
+                                                                    <th>Annual Contribution</th>
+
+
+                                                                </tr>
+
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="bg-indigo">RRSP</td>
+                                                                    <td><input type="number" min="0" max="100000000" step="1000"  ng-model="rrspAmount" ng-change="updateChart()"  class="form-control right-align" placeholder="0"></td>
+                                                                    <td><input type="number" min="0" max="100000" step="100" ng-model="rrspAnnCont" ng-change="updateChart()" class="form-control right-align" placeholder="0"></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="bg-lightblue">Non-Reg</td>
+                                                                    <td><input type="number" min="0" max="100000000" step="1000"  ng-model="nonregAmount" ng-change="updateChart()" class="form-control right-align" placeholder="0"></td>
+                                                                    <td><input type="number" min="0" max="100000" step="100" ng-model="nonregAnnCont" ng-change="updateChart()" class="form-control right-align" placeholder="0"></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="bg-darkred">TFSA</td>
+                                                                    <td><input type="number" min="0" max="100000000" step="1000"  ng-model="tfsaAmount" ng-change="updateChart()" class="form-control right-align" placeholder="0"></td>
+                                                                    <td><input type="number" min="0" max="100000" step="100"  ng-model="tfsaAnnCont" ng-change="updateChart()" class="form-control right-align" placeholder="0"></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class=""><h3>Total</h3></td>
+                                                                    <td ><h3><span class="label label-primary bg-darkgrey" >{{ rrspAmount + nonregAmount + tfsaAmount | currency : '$' : 0 }}</span></h3></td>
+                                                                    <td ><h3><span class="label label-primary bg-darkgrey" >{{ rrspAnnCont + nonregAnnCont + tfsaAnnCont | currency : '$' : 0 }}</span></h3></td>
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div><!-- Current holdings and contributions section  END -->
+
+                                                    <div class="col-sm-3"><!-- ROR Section START -->
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th></th>
+                                                                    <th>Rate of Return</th>
+                                                                </tr>
+
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="bg-indigo">RRSP</td>
+                                                                    <td><input type="number" min="-20.0" max="30.0" step="0.1"  ng-model="rrspRate" ng-change="updateChart()" class="form-control right-align" placeholder="0.0"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="bg-lightblue">Non-Reg</td>
+                                                                    <td><input type="number" min="-20.0" max="30.0" step="0.1"  ng-model="nonregRate" ng-change="updateChart()" class="form-control right-align" placeholder="0.0"></td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="bg-darkred">TFSA</td>
+                                                                    <td><input type="number" min="-20.0" max="30.0" step="0.1"  ng-model="tfsaRate" ng-change="updateChart()" class="form-control right-align" placeholder="0.0"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div><!-- ROR Section END -->
+                                                    
+                                                    <div class="col-sm-3" hidden="true"><!-- Help Guide Column  - Investments START -->
+                                                        <table class="table table-bordered"><!-- Help Guide Table - Investments START -->
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Help Guide</th>
+
+                                                                </tr>
+
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><a href=""><i class="material-icons">help</i> Help with this section</a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href=""><i class="material-icons">play_circle_outline</i> Video Explanation</a></td>
+                                                                </tr>
+                                                               
+                                                            </tbody>
+                                                        </table> <!-- Help Guide Table - Investments END-->
+                                                    </div><!-- Help Guide Column  - Investments END -->
+                                                        
+                                                    
+                                                    
+                                                </div><!-- Row Inside Investment Panel END -->
+                                                  
+                                            </div><!-- Investments Body END -->
+                                        </div><!-- Investment Panel END -->
+                                        
+
+                                        <div class="panel panel-darkgrey">
+                                            <!-- <div class="panel-heading"></div> -->
+
+
+                                            <div class="panel-body">
+
+
+                                                <div class="row"><!-- Row start -->
+                                                    <div class="col-sm-6">
+                                                
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Pre-Retirement</th>
+                                                            <th>Post-Retirement</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><h4>ROR: {{ avgROR | number : 2}}</h4></td>
+                                                            <td><h4>ROR: {{ avgROR - inflation | number : 2}}</h4></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button popover="Weighted Average Rate of Return of all your investments pre-retirement from your current age until your retirement age." popover-title="Weighted Average ROR Pre-Retirement" popover-trigger="mouseenter" class="btn btn-sm btn-link">Help</button></td>
+                                                            <td><button popover="Weighted Average Rate of Return of all your investments during the retirement phase, this assumes an equal and proportional drawdown during retirement, and also factors in inflation during retirement. Formula: (Avg ROR pre - inflation = Avg ROR post)" popover-title="Weighted Average ROR Post-Retirement" popover-trigger="mouseenter" class="btn btn-sm btn-link">Help</button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                    
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    <div class="col-sm-3"><!-- Filler column -->
+                                                    
+                                                    </div>
+                                                    
+                                                   
+                                                    <div class="col-sm-3" hidden="true"><!-- Help Guide Column  - Investments START -->
+                                                        <table class="table table-bordered"><!-- Help Guide Table - Investments START -->
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Help Guide</th>
+
+                                                                </tr>
+
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><a href=""><i class="material-icons">help</i> Help with this section</a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><a href=""><i class="material-icons">play_circle_outline</i> Video Explanation</a></td>
+                                                                </tr>
+                                                               
+                                                            </tbody>
+                                                        </table> <!-- Help Guide Table - Investments END-->
+                                                    </div><!-- Help Guide Column  - Investments END -->
+                                                </div>
+                                
+                                            </div>
+                                        </div>
+                                    </div><!-- This is the container for the Left Hand section above results END -->
+                                 
+                                    <div class="col-md-3"><!-- Right hand projections area START -->
+                                        <div class="panel panel-darkgrey">
+                                            <div class="panel-heading text-center">
+                                                <span>Projections</span>
+                                            </div>
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Your current age</td>
+                                                        <td style=" font-size: 20px; width: 40%">{{ currentAge}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Years until retirement:</td>
+                                                        <td style=" font-size: 20px; width: 40%">{{ retirementAge - currentAge}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Retirement years:</td>
+                                                        <td style=" font-size: 20px; width: 40%">{{ planningAge - retirementAge}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Years until end of life:</td>
+                                                        <td style=" font-size: 20px; width: 40%">{{ planningAge - currentAge}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="panel-body">
+                                                <center>
+                                                    <span></span>
+                                                    <p style="font-size: 20px"> </p>
+                                                </center>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-darkgrey">
+                                            <div class="panel-body">
+                                                <center>
+                                                    <span><b>Current Holdings at Retirement ({{ retirementAge}})</b></span>
+
+                                                </center>
+                                            </div>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td  class="bg-indigo">RRSP</td>
+
+                                                        <td style="width: 40%">{{ futureValueRrsp() | currency : '$' : 0}}</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td  class="bg-lightblue">Non-Reg</td>
+                                                        <td>{{ futureValueNonReg() | currency : '$' : 0}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  class="bg-darkred">TFSA</td>
+                                                        <td>{{ futureValueTfsa() | currency : '$' : 0}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="panel-body">
+                                                <center>
+                                                    <p><b>Total of Current Holdings at Retirement ({{ retirementAge}})</b></p>
+                                                    <p><span style="font-size: 28px">{{ futureValueRrsp() + futureValueNonReg() + futureValueTfsa() | currency : '$' : 0}}</span></p>
+
+                                                </center>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-darkgrey">
+                                            <div class="panel-body">
+                                                <center>
+                                                    <span><b>Contributions at Retirement ({{ retirementAge}})</b></span>
+
+
+                                                </center>
+                                            </div>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td  class="bg-indigo">RRSP Contributions</td>
+
+                                                        <td style="width: 40%">{{ futureValueRrspAnnCont() | currency : '$' : 0}}</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td  class="bg-lightblue">Non-Reg Contributions</td>
+                                                        <td>{{ futureValueNonRegAnnCont() | currency : '$' : 0}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td  class="bg-darkred">TFSA Contributions</td>
+                                                        <td>{{ futureValueTfsaAnnCont() | currency : '$' : 0}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="panel-body">
+
+
+
+                                                <center>
+                                                    <p><b>Total of Contributions at Retirement ({{ retirementAge}})</b></p>
+                                                    <p><span style="font-size: 28px">{{ futureValueRrspAnnCont() + futureValueNonRegAnnCont() + futureValueTfsaAnnCont() | currency : '$' : 0}}</span></p>
+
+                                                </center>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="panel panel-darkgrey">
+                                            <div class="panel-body">
+
+
+
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div><!-- Right hand projections area END-->
+                                </div><!-- First set of boxes END -->
+
+                                
+                                <!-- Second set of boxes after first -->
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="panel panel-darkgrey" >
+
+                                            <div class="panel-heading">
+                                                <b>Results</b>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <p>The amounts you see represent the monthly and annual income streams you can expect to receive from your investments during retirement starting at the age {{ retirementAge}}.</p>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr class="bg-gold">
+                                                                    <th>Monthly Income</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><span style="font-size: 60px">{{ monthlyPayment(futureValueRrsp() + futureValueNonReg() + futureValueTfsa() + futureValueRrspAnnCont() + futureValueNonRegAnnCont() + futureValueTfsaAnnCont(), 12, avgROR, ((planningAge - retirementAge)) * 12) | currency : '$' : 0}}</span></td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="width: 40%"><button popover="Explanation here." popover-title="Monthly Income" popover-trigger="mouseenter" class="btn btn-sm btn-link">What does this mean?</button></td>
+
+                                                                </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr class="bg-gold">
+                                                                    <th>Annual Income</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+
+                                                                    <td><span style="font-size: 60px">{{ monthlyPayment(futureValueRrsp() + futureValueNonReg() + futureValueTfsa() + futureValueRrspAnnCont() + futureValueNonRegAnnCont() + futureValueTfsaAnnCont(), 1, avgROR - inflation, (planningAge - retirementAge)) | currency : '$' : 0}}</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="width: 40%"><button popover="Explanation here." popover-title="Annual Income" popover-trigger="mouseenter" class="btn btn-sm btn-link">What does this mean?</button></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <h6>The amounts you see represent the monthly and annual income stream you can expect to receive during your retirement. It is as of the age of retirement inputed ({{ retirementAge}}). The program assumes your weighted average rate of return during the retirement years minus inflation (2.5%). Monthly and annual amount adjusted for inflation.</h6>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="panel panel-darkgrey">
+
+                                            <div class="panel-heading text-center">
+                                                <b>Mix at retirement ({{ retirementAge}})</b>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <div class="chart-container">
+                                                    <center>
+                                                        <p><b>Mix at retirement (age {{ retirementAge}})</b></p>
+
+                                                        <canvas id="doughnut" class="chart chart-doughnut chart-xs ng-isolate-scope" data="data" labels="labels" colours="colours" legend="true" height="100" width="100" style="width: 400px; height: 150px;"></canvas>
+
+
+
+
+                                                    </center>
+                                                </div>
+                                            </div>
+                                            <div class="panel-footer bg-gold">
+                                                <center>
+                                                    <p><span>Total Investments at Retirement</span></p>
+
+                                                </center>
+                                            </div>
+                                            <div class="panel-footer">
+                                                <center>
+
+                                                    <p><span style="font-size: 30px">{{ futureValueRrsp() + futureValueNonReg() + futureValueTfsa() + futureValueRrspAnnCont() + futureValueNonRegAnnCont() + futureValueTfsaAnnCont() | currency : '$' : 0}}</span></p>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div hidden="true"><!-- Observation Engine  START -->
+                                     <div class="row"> <!-- Observation Engine first row START -->
+                                         <div class="col-lg-12">
+                                             <div class="panel panel-darkgrey">
+                                                 <div class="panel-heading">
+                                                     <b>Observation Engine</b>
+                                                 </div>
+                                                 <div class="panel-body"><!-- Body of the Observation engine START- result go in here as unique alerts -->
+                                                     <p><button class="btn btn-raised btn-primary" ng-click="obsCurrVsCont()">Start Observation Engine</button></p>
+                                                     
+                                                     
+                                                     
+                                                     
+                                                     <div id="savingsAtRetirementObs" class="well">
+                                                    
+                                                      <p><b>Savings at Retirement Summary</b></p>
+                                                     <p>{{ obsCurrVsContMsg }}</p>
+                                                    
+                                                     </div>
+            
+                                                 </div><!-- Body of the Observation engine END - result go in here as unique alerts -->
+                                             </div>
+                                             
+                                           
+                                         </div>
+                                     </div><!-- Observation Engine first row END -->
+  
+                                </div><!-- Observation Engine END -->
+                                
+                                
+
+                                <div class="row"><!-- Printing options START -->
+                                    <div class="col-md-6 ">
+                                        <button disabled class="btn btn-default" onclick="window.print()">Print Results</button>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-3">
+
+
+                                    </div>
+                                </div><!-- Printing Options END -->
+                                
+                                
+                               
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Master Container END -->
+        </div>
+
+
+
+        <!--
+                                        <accordion>
+                                            <accordion-group heading="Debugging Info">
+
+                                                <p>Current Age:{{ currentAge}} | Retirement Age: {{ retirementAge}} | Planning Age: {{ planningAge}}</p>
+                                                <p>Current Income: {{ currentIncome}}</p>
+                                                <p>Inflation: {{ inflation}} </p>
+                                                <p>rrspAmount = {{ rrspAmount}} | rrspAnnCont = {{ rrspAnnCont}}</p>
+                                                <p>nonregAmount = {{ nonregAmount}} | nonregAnnCont = {{ nonregAnnCont}}</p>
+                                                <p>tfsaAmount = {{ tfsaAmount}} | tfsaAnnCont = {{ tfsaAnnCont}}</p>
+                                                <br>
+                                                <p>RRSP FV= {{ (futureValueRrsp()) | currency : '$' : 0}} |
+                                                    Non-Reg FV = {{ futureValueNonReg() | currency : '$' : 0}} |
+                                                    TFSA FV = {{ futureValueTfsa() | currency : '$' : 0}} |
+                                                    Total (ang):{{ futureValueRrsp() + futureValueNonReg() + futureValueTfsa() | currency : '$' : 0}}
+                                                    Total (func): {{ totalInvestments() | currency : '$' : 0}}
+
+                                                <p>RRSP @ Age {{ retirementAge}} = {{ futureValueRrsp() | currency : '$' : 0}}</p>
+                                                <p>Non-Reg @ Age {{ retirementAge}} = {{ futureValueNonReg() | currency : '$' : 0}}</p>
+                                                <p>TFSA @ Age {{ retirementAge}} = {{ futureValueTfsa() | currency : '$' : 0}}</p>
+                                                <br>
+                                                <p>Monthly Result: {{ monthlyPayment(totalInvestments(), 12, 7.7, ((planningAge - retirementAge)) * 12) | currency : '$' : 0}} | Annual Result: {{ monthlyPayment(totalInvestments(), 1, 7.7, (planningAge - retirementAge)) | currency : '$' : 0}}</p>
+
+
+                                                <div>
+                                                    <center>
+                                                        <p></p>
+
+                                                        <p>Monthly Amount:</p>
+                                                        <span style="font-size: 60px">{{ monthlyPayment(futureValueRrsp() + futureValueNonReg() + futureValueTfsa() + futureValueRrspAnnCont() + futureValueNonRegAnnCont() + futureValueTfsaAnnCont(), 12, avgROR, ((planningAge - retirementAge)) * 12) | currency : '$' : 0}}</span>
+                                                        <br>
+                                                        <br>
+                                                        <p>Annual Amount</p>
+                                                        <span style="font-size: 60px">{{ monthlyPayment(futureValueRrsp() + futureValueNonReg() + futureValueTfsa() + futureValueRrspAnnCont() + futureValueNonRegAnnCont() + futureValueTfsaAnnCont(), 1, avgROR - inflation, (planningAge - retirementAge)) | currency : '$' : 0}}</span>
+
+                                                        <h5>This is the gross annual amount of money you will be able to take generate every year from your retirement savings. It does not include other sources of income. It is before taxation.</h5>
+                                                        <h6>(For your retirement period of {{ planningAge - retirementAge}} years)</h6>
+
+                                                        <h6>Growth on your assets is simplified during the retirement years and is calculated by taking the average rate of return of all your investments and subtracting inflation (2.5 currently) to calculate your real return. of your AVG ROR - Inflation
+                                                            [{{ avgROR | number }} - {{ inflation}}= {{ avgROR - inflation | number }} ]</h6>
+
+                                                    </center>
+                                                </div>
+
+
+
+                                                <h6><b>Comment/Uncomment to enable or disable (may cause watchers to fire)</b></h6>
+
+
+
+                                            </accordion-group>
+                                        </accordion>
+        -->
+
+
+
+        <!-- This is the printed area  -->
+        <div class="container" id="printable">
+
+        
+            
+            <div class="container">
+
+
+
+                <p>Your personal result</p>
+                <p> Annual Amount {{ monthlyPayment(totalInvestments(), 1, 7.7, (planningAge - retirementAge)) | currency : '$' : 0}}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Investments</th>
+                                <th>Current Holdings</th>
+                                <th>Annual Contributions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</html>
+
